@@ -159,8 +159,3 @@ source-criticism workbench for teaching).
 
 MIT, see [LICENSE](LICENSE). If you use Atlas in your work, please cite it using
 [CITATION.cff](CITATION.cff).
-
-## Author
-
-Jeff O'Brien, Curator, Material / Image Research Lab (MIRL), Department of History
-of Art and Architecture, University of California, Santa Barbara.
