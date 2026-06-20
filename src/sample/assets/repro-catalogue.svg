@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1300" viewBox="0 0 1000 1300">
+  <defs>
+    <pattern id="halftone" width="6" height="6" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="3" r="1.2" fill="#000" opacity="0.22"/>
+    </pattern>
+  </defs>
+  <rect width="1000" height="1300" fill="#efe9dd"/>
+  <!-- reproduced plate -->
+  <rect x="120" y="120" width="760" height="520" fill="#b9a884"/>
+  <rect x="150" y="150" width="700" height="120" fill="#c08a3e"/>
+  <rect x="150" y="270" width="700" height="120" fill="#3a6e7c"/>
+  <rect x="150" y="390" width="700" height="120" fill="#7c3a3a"/>
+  <rect x="430" y="170" width="120" height="320" fill="#e9e3d6"/>
+  <rect x="120" y="120" width="760" height="520" fill="url(#halftone)"/>
+  <rect x="120" y="120" width="760" height="520" fill="none" stroke="#3a342a" stroke-width="2"/>
+  <text x="120" y="700" font-family="serif" font-size="30" fill="#2a251d">Pl. 14. N. Sarrouf, Sea-Wall Mural, 1979 (destroyed).</text>
+  <text x="120" y="745" font-family="serif" font-size="24" fill="#5a5347">Reproduced from a photograph in the artist's papers.</text>
+  <line x1="120" y1="800" x2="880" y2="800" stroke="#9a9788" stroke-width="1"/>
+  <text x="120" y="1240" font-family="monospace" font-size="20" fill="#6a6658">EXHIBITION CATALOGUE, 1986 · P. 41</text>
+</svg>

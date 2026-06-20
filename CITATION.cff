@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Atlas"
+abstract: >-
+  A client-side, local-first tool to assemble many images of one place, object,
+  or event into a relational, spatial, and temporal atlas, consent first: gather
+  a dispersed corpus of hashed, source-tethered images; relate them into an image
+  complex read as a graph; cross their camera vantages on a map; arrange them on a
+  Mnemosyne plate; look closely with serverless deep zoom and annotation; and
+  publish a consent-cleared interactive atlas. The second tool of the Parallax
+  suite.
+type: software
+authors:
+  - family-names: "O'Brien"
+    given-names: "Jeff"
+    affiliation: "Material / Image Research Lab (MIRL), University of California, Santa Barbara"
+version: "1.0.0"
+date-released: "2026-06-19"
+license: MIT
+keywords:
+  - open-source investigation
+  - counter-forensics
+  - image complex
+  - Mnemosyne
+  - IIIF
+  - geolocation
+  - consent
+  - data sovereignty
+  - art history
+  - archives
+  - digital humanities

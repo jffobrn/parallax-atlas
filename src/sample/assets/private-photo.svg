@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#2a2622"/>
+  <!-- an interior: the fragment mounted on a domestic wall -->
+  <rect y="560" width="1200" height="240" fill="#3a342c"/>
+  <rect x="120" y="120" width="600" height="420" fill="#4a4036"/>
+  <rect x="150" y="150" width="540" height="360" fill="#cfc7b6"/>
+  <polygon points="250,210 470,228 452,460 258,440" fill="#c08a3e"/>
+  <circle cx="350" cy="300" r="48" fill="#1d1713"/>
+  <!-- a person at the edge of frame, identity protected -->
+  <rect x="820" y="220" width="240" height="520" fill="#0a0907"/>
+  <rect x="820" y="300" width="240" height="120" fill="#7c3a3a" opacity="0.85"/>
+  <text x="840" y="372" font-family="monospace" font-size="22" fill="#ffb0aa">IDENTIFYING · EMBARGOED</text>
+  <text x="40" y="760" font-family="monospace" font-size="20" fill="#8c8270">PRIVATE PHOTOGRAPH · NOT FOR PUBLICATION</text>
+</svg>

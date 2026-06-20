@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000">
+  <rect width="1000" height="1000" fill="#1a1714"/>
+  <!-- a broken plaster fragment on a neutral ground -->
+  <polygon points="280,200 760,250 720,780 230,720" fill="#cfc7b6"/>
+  <polygon points="280,200 760,250 720,780 230,720" fill="none" stroke="#0c0a08" stroke-width="3"/>
+  <!-- painted remnant: part of the central figure -->
+  <polygon points="360,300 560,320 540,640 350,620" fill="#c08a3e"/>
+  <circle cx="455" cy="400" r="60" fill="#1d1713"/>
+  <polygon points="360,500 560,512 552,600 356,592" fill="#3a6e7c"/>
+  <!-- chipped edges -->
+  <polygon points="760,250 800,360 720,420 720,300" fill="#1a1714"/>
+  <polygon points="230,720 300,760 360,700 280,660" fill="#1a1714"/>
+  <text x="40" y="950" font-family="monospace" font-size="20" fill="#8c8270">SALVAGED FRAGMENT · PRIVATE COLLECTION</text>
+</svg>

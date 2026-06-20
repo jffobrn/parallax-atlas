@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1100" viewBox="0 0 900 1100">
+  <rect width="900" height="1100" fill="#2b2521"/>
+  <!-- central figure, detail crop -->
+  <rect x="120" y="80" width="660" height="940" fill="#d8d2c0" opacity="0.94"/>
+  <circle cx="450" cy="300" r="150" fill="#1d1713"/>
+  <rect x="300" y="470" width="300" height="430" fill="#c08a3e"/>
+  <rect x="300" y="610" width="300" height="120" fill="#3a6e7c"/>
+  <rect x="300" y="770" width="300" height="90" fill="#7c3a3a"/>
+  <!-- a painted signature, lower right -->
+  <text x="640" y="980" font-family="serif" font-size="34" fill="#1d1713" transform="rotate(-4 640 980)">N. Sarrouf</text>
+  <text x="40" y="1060" font-family="monospace" font-size="20" fill="#8c8270">CENTRAL PANEL · DETAIL</text>
+</svg>

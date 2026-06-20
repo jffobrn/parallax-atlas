@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <defs>
+    <linearGradient id="skySW" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#241c18"/>
+      <stop offset="1" stop-color="#3a2c22"/>
+    </linearGradient>
+    <radialGradient id="vigSW" cx="0.5" cy="0.5" r="0.75">
+      <stop offset="0.6" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0.5"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#skySW)"/>
+  <rect y="520" width="1200" height="280" fill="#15110e"/>
+  <!-- wall seen obliquely from the south-west -->
+  <polygon points="180,250 980,210 1010,560 150,600" fill="#2b2521"/>
+  <polygon points="180,250 980,210 1010,560 150,600" fill="none" stroke="#0c0a08" stroke-width="4"/>
+  <!-- mural bands -->
+  <polygon points="210,275 940,238 952,360 220,392" fill="#c08a3e"/>
+  <polygon points="220,392 952,360 964,452 228,486" fill="#3a6e7c"/>
+  <polygon points="228,486 964,452 978,540 200,575" fill="#7c3a3a"/>
+  <!-- a standing figure motif -->
+  <polygon points="560,300 640,296 660,520 540,528" fill="#d8d2c0" opacity="0.92"/>
+  <circle cx="600" cy="332" r="26" fill="#1d1713"/>
+  <rect width="1200" height="800" fill="url(#vigSW)"/>
+  <text x="40" y="760" font-family="monospace" font-size="22" fill="#9a8e7c">VELA / QUAI DES MARAIS · SW STATION</text>
+</svg>

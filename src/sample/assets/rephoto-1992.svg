@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <defs>
+    <radialGradient id="vigRP" cx="0.5" cy="0.5" r="0.78">
+      <stop offset="0.6" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0.45"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="800" fill="#3a3631"/>
+  <rect y="520" width="1200" height="280" fill="#201d19"/>
+  <!-- same SW wall, mostly whitewashed -->
+  <polygon points="180,250 980,210 1010,560 150,600" fill="#cfc9bd"/>
+  <polygon points="180,250 980,210 1010,560 150,600" fill="none" stroke="#11100e" stroke-width="4"/>
+  <!-- faded mural showing through whitewash gaps -->
+  <polygon points="210,275 470,262 478,360 218,382" fill="#c08a3e" opacity="0.35"/>
+  <polygon points="700,250 940,238 952,360 712,375" fill="#7c3a3a" opacity="0.4"/>
+  <polygon points="540,300 612,296 632,520 520,528" fill="#a59f90" opacity="0.6"/>
+  <!-- drips and patchy cover -->
+  <rect x="470" y="262" width="230" height="270" fill="#d7d2c6" opacity="0.85"/>
+  <rect width="1200" height="800" fill="url(#vigRP)"/>
+  <text x="40" y="760" font-family="monospace" font-size="22" fill="#7a756a">SW WALL, AFTER WHITEWASHING · 1992</text>
+</svg>
