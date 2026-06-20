@@ -1,6 +1,7 @@
 # Atlas
 
-Assemble many images of one place, object, or event into a relational, spatial, and temporal atlas, consent first.
+Assemble many images of one place, object, or event into a relational, spatial,
+and temporal atlas.
 
 Atlas is the second tool of **Parallax**, a client-side, local-first suite that
 brings the transferable methods of open-source investigation into art history and
@@ -11,13 +12,6 @@ images of one thing, relates them into an image complex, places their camera
 vantages on a map, arranges them on a Mnemosyne plate, and lets you look closely
 with deep zoom and annotation. Warburg's plate meeting Forensic Architecture's
 operative model.
-
-It makes one move that the studio-scale tools it learns from do not: **it begins
-from consent.** Restricted and embargoed images, the identities of sources, and
-unsafe locations are withheld from anything published unless deliberately
-released. In an atlas this matters twice over, because a relation or a montage
-tile could otherwise betray that a withheld image exists. That rule is enforced by
-architecture, not by discipline.
 
 > Atlas assembles a source-tethered image complex, not legal proof or a verified
 > attribution. It documents and corroborates; it does not adjudicate.
@@ -30,7 +24,7 @@ architecture, not by discipline.
 2. **Gather the corpus.** Photographs, reproductions, film stills, documents, and
    artworks, held as files or referenced by link. Each carries a datetime with
    its precision, provenance, a sha-256 of the bytes held, rights, tags, and a
-   consent state (public, restricted, embargoed).
+   release state (public, restricted, embargoed).
 3. **Relate the images.** Typed relations (same object, same place, derived from,
    detail of, before / after, responds to, and more) turn a heap of pictures into
    an image complex you can read as a graph.
@@ -45,7 +39,7 @@ architecture, not by discipline.
    complex, camera positions, chronology, catalogue), the full JSON project file,
    and an optional print dossier.
 
-## The consent boundary
+## The publish boundary
 
 Every export and every published view is produced by one function,
 [`publicClone`](src/core/consent.ts). It takes the full project and returns a
@@ -59,15 +53,15 @@ sanitized copy in which:
 - plate tiles referencing a withheld image are removed, and a plate left empty is
   dropped.
 
-Sensitive data cannot leak by accident because nothing sensitive crosses that
-boundary: the public types simply have no field for it. The published artifact
-also states plainly what was withheld.
+Nothing restricted crosses that boundary: the public types simply have no field
+for it, and the published artifact states plainly what was withheld.
 
 ## Stack
 
-Best-in-class, source-available, free for noncommercial use, and client-side local-first. The application is
-a static bundle; all processing happens in the browser; data stays on the
-machine; a published atlas is itself a static artifact that hosts free.
+Best-in-class, source-available, free for noncommercial use, and client-side
+local-first. The application is a static bundle; all processing happens in the
+browser; data stays on the machine; a published atlas is itself a static artifact
+that hosts free.
 
 - React, TypeScript, Vite
 - MapLibre GL with deck.gl overlays for camera positions, sightline rays, and the
@@ -85,7 +79,7 @@ machine; a published atlas is itself a static artifact that hosts free.
 - Self-hosted Archivo, Spline Sans Mono, and Noto Naskh Arabic (no font CDN)
 
 Atlas reuses the shared core that Sightlines established (the typed data layer,
-the consent boundary, the resection geometry, hashing, persistence, and the
+the publish boundary, the resection geometry, hashing, persistence, and the
 forensic design system), and extends the model with relations and plates.
 
 ## Safety properties
@@ -99,9 +93,6 @@ forensic design system), and extends the model with relations and plates.
 - **We hash only what we hold.** For a linked image, the remote bytes are not
   downloaded; an archived snapshot record is hashed instead, and the interface
   says so.
-- **Consent is enforced, not hidden.** Publishing routes through `publicClone`,
-  and the published file discloses what it withheld, down to the relations and
-  plate tiles removed.
 
 ## Getting started
 
@@ -136,8 +127,8 @@ file that hosts the same way or opens offline.
 The suite's shared core lives in [`src/core`](src/core) as clean, exported
 modules carried over from Sightlines:
 
-- `types.ts` the typed data model, including the public (consent-cleared) shapes
-- `consent.ts` the `publicClone` boundary
+- `types.ts` the typed data model, including the public (sanitized) shapes
+- `consent.ts` the `publicClone` publish boundary
 - `geo.ts` resection geometry (crossing the vantages of one object)
 - `hash.ts` sha-256 fixity over held bytes
 - `time.ts`, `format.ts` time without false precision, and apparatus formatting
@@ -149,11 +140,11 @@ on top.
 
 ## Roadmap
 
-Parallax is a small suite of siblings that share this core and the consent ethic.
-Built so far: **Sightlines** (reconstruct a single incident or site) and
-**Atlas** (the image complex as a navigable space). Planned as interest dictates:
-**Situated Testimony** (model-aided oral history) and **Verification** (a
-source-criticism workbench for teaching).
+Parallax is a small suite of siblings that share this core. Built so far:
+**Sightlines** (reconstruct a single incident or site) and **Atlas** (the image
+complex as a navigable space). Planned as interest dictates: **Situated
+Testimony** (model-aided oral history) and **Verification** (a source-criticism
+workbench for teaching).
 
 ## License
 
@@ -169,6 +160,6 @@ Parallax publishes these instruments for verifiability, not as products to adopt
 
 ## Author
 
-Parallax Agency and Jeff O'Brien. Parallax is an independent, consent-first
-research practice for art history and the archive, founded and directed by Jeff
-O'Brien (Material / Image Research Lab, UC Santa Barbara).
+Parallax Agency and Jeff O'Brien. Parallax is an independent research practice for
+art history and the archive, founded and directed by Jeff O'Brien (Material /
+Image Research Lab, UC Santa Barbara).
