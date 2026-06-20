@@ -65,7 +65,7 @@ also states plainly what was withheld.
 
 ## Stack
 
-Best-in-class, open source, free, and client-side local-first. The application is
+Best-in-class, source-available, free for noncommercial use, and client-side local-first. The application is
 a static bundle; all processing happens in the browser; data stays on the
 machine; a published atlas is itself a static artifact that hosts free.
 
@@ -157,5 +157,17 @@ source-criticism workbench for teaching).
 
 ## License and citation
 
-MIT, see [LICENSE](LICENSE). If you use Atlas in your work, please cite it using
+Source-available, not open source. The source code is under the
+[PolyForm Noncommercial License 1.0.0](LICENSE); the non-code assets (the design,
+this documentation, the bundled sample, and the investigations the tool produces)
+are under [CC BY-NC-SA 4.0](LICENSE-ASSETS.md). Free to use, modify, and share for
+any noncommercial purpose, including education, research, nonprofits, and
+government. Commercial use is not granted here; contact the authors for commercial
+licensing. If you use Atlas in your work, please cite it using
 [CITATION.cff](CITATION.cff).
+
+## Author
+
+Parallax Agency and Jeff O'Brien. Parallax is an independent, consent-first
+research practice for art history and the archive, founded and directed by Jeff
+O'Brien (Material / Image Research Lab, UC Santa Barbara).

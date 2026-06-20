@@ -4,6 +4,16 @@ All notable changes to Atlas are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project adheres
 to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-06-20
+
+### Changed
+
+- Relicensed from MIT to a dual noncommercial licence: the source code is now
+  under the PolyForm Noncommercial License 1.0.0 and the non-code assets under
+  CC BY-NC-SA 4.0. The project is source-available, not open source; commercial
+  use is not granted. Versions released under MIT remain available under MIT.
+- Attribution updated to Parallax Agency and Jeff O'Brien.
+
 ## [1.0.0] - 2026-06-19
 
 First release. The second tool of the Parallax suite: assemble many images of one
