@@ -7,7 +7,7 @@ import {
 import { useStore } from '../state/store'
 import { useMediaUrl } from '../state/useMediaUrl'
 import { allTags, relationsOf } from '../lib/derive'
-import { ConsentBadge, Dir, KindBadge, RELATION_KIND_SHORT } from '../components/ui'
+import { ConsentBadge, Dir, KindBadge, RELATION_KIND_SHORT, rowButton } from '../components/ui'
 
 type ConsentFilter = 'all' | 'public' | 'protected'
 
@@ -141,7 +141,7 @@ export function Rail() {
                 key={r.id}
                 className="row"
                 data-selected={r.id === selectedRelationId}
-                onClick={() => useStore.getState().selectRelation(r.id)}
+                {...rowButton(() => useStore.getState().selectRelation(r.id))}
               >
                 <div className="row-main">
                   <div className="row-sub" style={{ marginTop: 0 }}>
@@ -179,7 +179,7 @@ function ImageRow({
       className="row"
       data-selected={selected}
       data-hovered={hovered}
-      onClick={() => useStore.getState().selectImage(image.id)}
+      {...rowButton(() => useStore.getState().selectImage(image.id))}
       onMouseEnter={() => useStore.getState().hover(image.id)}
       onMouseLeave={() => useStore.getState().hover(null)}
     >

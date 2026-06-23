@@ -4,6 +4,18 @@ All notable changes to Atlas are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project adheres
 to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.2] - 2026-06-23
+
+### Added
+
+- The corpus and relation rows in the rail are keyboard accessible: each is now a
+  focusable button that activates on Enter or Space, with the standard focus
+  ring, so the atlas can be navigated without a mouse.
+
+### Fixed
+
+- Readout counts read in the singular when there is one (1 image, not 1 images).
+
 ## [1.2.1] - 2026-06-23
 
 ### Fixed

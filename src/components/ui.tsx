@@ -1,5 +1,5 @@
 import * as Select from '@radix-ui/react-select'
-import type { ReactNode } from 'react'
+import type { KeyboardEvent, ReactNode } from 'react'
 import {
   dirOf,
   type AtlasSubject,
@@ -8,6 +8,37 @@ import {
   type ImageKind,
   type RelationKind,
 } from '../core'
+
+/**
+ * Make a clickable row keyboard-activatable like a button: focusable, with Enter
+ * or Space triggering the action. Spread onto the row element:
+ *   <div className="row" {...rowButton(() => select(id))}>
+ * A keypress that bubbles up from a nested control (a real button inside the
+ * row) is ignored via the target/currentTarget guard, so secondary buttons keep
+ * their own behaviour.
+ */
+export function rowButton(onActivate: () => void) {
+  return {
+    role: 'button' as const,
+    tabIndex: 0,
+    onClick: onActivate,
+    onKeyDown: (e: KeyboardEvent) => {
+      if ((e.key === 'Enter' || e.key === ' ') && e.target === e.currentTarget) {
+        e.preventDefault()
+        onActivate()
+      }
+    },
+  }
+}
+
+/** A stat readout: a bold count followed by its noun, pluralized to match. */
+export function Count({ n, noun }: { n: number; noun: string }) {
+  return (
+    <>
+      <b>{n}</b> {n === 1 ? noun : `${noun}s`}
+    </>
+  )
+}
 
 export function Field({
   label,

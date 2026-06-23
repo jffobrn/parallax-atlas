@@ -8,6 +8,7 @@ import {
   isProjectFile,
 } from '../core'
 import { useStore, type StageView } from '../state/store'
+import { Count } from '../components/ui'
 import { downloadJson, readFileText, slugify } from '../lib/download'
 import { PublishDialog } from '../publish/PublishDialog'
 import { AboutDialog } from './AboutDialog'
@@ -148,10 +149,10 @@ export function Toolbar() {
 
       <div className="readout">
         {msg && <span className="signal">{msg}</span>}
-        <span><b>{project.images.length}</b> images</span>
+        <span><Count n={project.images.length} noun="image" /></span>
         <span><b>{publicCount}</b> public</span>
-        <span><b>{project.relations.length}</b> relations</span>
-        <span><b>{project.panels.length}</b> plates</span>
+        <span><Count n={project.relations.length} noun="relation" /></span>
+        <span><Count n={project.panels.length} noun="plate" /></span>
         <span className="cursor-readout">
           {cursor ? formatLatLng(cursor.lat, cursor.lng) : '--'}
         </span>
