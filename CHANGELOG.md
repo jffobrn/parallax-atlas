@@ -4,6 +4,21 @@ All notable changes to Atlas are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project adheres
 to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.2] - 2026-06-23
+
+### Fixed
+
+- Reset (and the other toolbar actions) could not be clicked at narrower window
+  widths: the toolbar's action row wrapped below the bar, where the rail card
+  painted over the buttons and swallowed the clicks. The action buttons now stay
+  on a single row; the readout yields and clips first.
+- Reset now confirms in the app (a two-step button) instead of a native
+  `confirm()` dialog, which some browsers and installed PWAs suppress, and it
+  reports the outcome.
+- A debounced save from a just-prior edit could fire after a reset and restore
+  the old project; the pending save is now cancelled before the sample is
+  written.
+
 ## [1.1.1] - 2026-06-22
 
 ### Changed

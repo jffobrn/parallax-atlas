@@ -28,6 +28,8 @@ export function Toolbar() {
   const [publishOpen, setPublishOpen] = useState(false)
   const [aboutOpen, setAboutOpen] = useState(false)
   const [msg, setMsg] = useState<string | null>(null)
+  const [resetArmed, setResetArmed] = useState(false)
+  const resetTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const importInput = useRef<HTMLInputElement | null>(null)
 
   const flash = (m: string) => {
@@ -54,14 +56,22 @@ export function Toolbar() {
     }
   }
 
+  // Reset replaces the local project with the fictional sample, so it asks to
+  // confirm. We do this in-app (a two-step button) rather than with window.confirm,
+  // which some browsers and installed PWAs suppress, and we surface the outcome,
+  // which a bare `void resetToSample()` would have swallowed.
   const reset = () => {
-    if (
-      window.confirm(
-        'Replace the current atlas with the fictional sample? This clears your local data.',
-      )
-    ) {
-      void resetToSample()
+    if (!resetArmed) {
+      setResetArmed(true)
+      if (resetTimer.current) clearTimeout(resetTimer.current)
+      resetTimer.current = setTimeout(() => setResetArmed(false), 4000)
+      return
     }
+    if (resetTimer.current) clearTimeout(resetTimer.current)
+    setResetArmed(false)
+    resetToSample()
+      .then(() => flash('Reset to the sample.'))
+      .catch((e) => flash(e instanceof Error ? e.message : 'Reset failed.'))
   }
 
   const publicCount = project.images.filter((s) => s.consent === 'public').length
@@ -97,8 +107,21 @@ export function Toolbar() {
         <button className="btn btn-sm btn-mono btn-ghost" onClick={() => importInput.current?.click()}>
           Import
         </button>
-        <button className="btn btn-sm btn-mono btn-ghost" onClick={reset}>
-          Reset
+        <button
+          className="btn btn-sm btn-mono btn-ghost"
+          onClick={reset}
+          title="Replace the local project with the fictional sample"
+          style={
+            resetArmed
+              ? {
+                  background: 'var(--alert-wash)',
+                  borderColor: 'var(--alert-dim)',
+                  color: 'var(--alert-bright)',
+                }
+              : undefined
+          }
+        >
+          {resetArmed ? 'Confirm reset' : 'Reset'}
         </button>
         <button className="btn btn-sm btn-mono btn-ghost" onClick={() => setAboutOpen(true)}>
           About

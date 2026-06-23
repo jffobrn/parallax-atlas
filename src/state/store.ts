@@ -121,6 +121,14 @@ function schedulePersist(project: Project) {
   }, 400)
 }
 
+/** Cancel a pending debounced save so it cannot clobber a direct write. */
+function cancelPersist() {
+  if (persistTimer) {
+    clearTimeout(persistTimer)
+    persistTimer = null
+  }
+}
+
 export const useStore = create<AppState>()((set, get) => {
   /** Apply a project mutation and queue a save. */
   const commit = (project: Project) => {
@@ -161,6 +169,9 @@ export const useStore = create<AppState>()((set, get) => {
     },
 
     async resetToSample() {
+      // A debounced save from a just-prior edit would otherwise fire after this
+      // and restore the old project, so cancel it before writing the sample.
+      cancelPersist()
       await clearProject()
       const sample = await buildSampleProject()
       await saveProject(sample)
