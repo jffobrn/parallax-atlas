@@ -1,0 +1,20 @@
+{
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "cc-by-nc-sa-4.0",
+  "title": "Atlas: assemble many images of one place, object, or event into a relational, spatial, and temporal atlas",
+  "description": "The second tool of the Parallax suite, a counter-forensic toolkit for art history and the archive. Assembles many images of one place, object, or event into a navigable whole: a Mnemosyne plate of arranged images, a graph of typed relations, camera positions on a map whose sightlines cross to resect a subject, a linked timeline, and serverless deep-zoom close looking with annotation. A single publish boundary clears what leaves the project. Source-available and published for verifiability, not as a product to adopt. Source code is licensed under the PolyForm Noncommercial License 1.0.0; the non-code assets under CC BY-NC-SA 4.0.",
+  "creators": [
+    { "name": "Parallax Agency" },
+    { "name": "O'Brien, Jeff", "affiliation": "Material / Image Research Lab (MIRL), University of California, Santa Barbara" }
+  ],
+  "keywords": [
+    "image complex",
+    "Mnemosyne atlas",
+    "counter-forensics",
+    "IIIF",
+    "art history",
+    "archives"
+  ],
+  "notes": "Source code: PolyForm Noncommercial License 1.0.0. Non-code assets: CC BY-NC-SA 4.0. Source-available, not open source; commercial use is not granted."
+}

@@ -4,6 +4,20 @@ All notable changes to Atlas are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project adheres
 to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.1] - 2026-06-22
+
+### Changed
+
+- Removed `CITATION.cff`: these tools are published for verifiability as part of
+  Parallax, not packaged for reuse, so they carry no citation metadata.
+- Rebalanced the README to lead with the method; consent is kept as one feature
+  (the publish boundary) rather than the headline of every section.
+
+### Fixed
+
+- Chronology: the lane label no longer overlaps the leftmost image marks when
+  dates cluster against the left edge.
+
 ## [1.1.0] - 2026-06-20
 
 ### Changed
@@ -47,4 +61,6 @@ first.
   project file, and an optional print dossier.
 - **A plainly fictional sample** that opens loaded and exercises every feature.
 
+[1.1.1]: https://github.com/jffobrn/parallax-atlas/releases/tag/v1.1.1
+[1.1.0]: https://github.com/jffobrn/parallax-atlas/releases/tag/v1.1.0
 [1.0.0]: https://github.com/jffobrn/parallax-atlas/releases/tag/v1.0.0
