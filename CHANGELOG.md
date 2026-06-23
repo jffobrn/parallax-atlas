@@ -4,6 +4,16 @@ All notable changes to Atlas are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project adheres
 to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.1] - 2026-06-23
+
+### Fixed
+
+- Close-looking annotations now use an in-app label field at the click point
+  instead of window.prompt, which installed PWAs suppress (it returns null
+  silently). Annotation previously appeared to do nothing in standalone mode.
+  The field commits on Enter or Add and dismisses on Escape or Cancel without
+  closing the viewer.
+
 ## [1.2.0] - 2026-06-23
 
 ### Added

@@ -53,6 +53,10 @@ function LightboxBody({ image }: { image: Image }) {
   const viewerRef = useRef<OpenSeadragon.Viewer | null>(null)
   const [pins, setPins] = useState<Pin[]>([])
   const [failed, setFailed] = useState(false)
+  // An annotation awaiting its label: normalized image coords plus the click
+  // position (viewer pixels) where the inline field is shown.
+  const [pending, setPending] = useState<{ nx: number; ny: number; left: number; top: number } | null>(null)
+  const [draft, setDraft] = useState('')
 
   const annotations = image.annotations ?? []
   const annosRef = useRef(annotations)
@@ -119,8 +123,12 @@ function LightboxBody({ image }: { image: Image }) {
       const nx = ip.x / size.x
       const ny = ip.y / size.y
       if (nx < 0 || nx > 1 || ny < 0 || ny > 1) return
-      const text = window.prompt('Annotation label')?.trim()
-      if (text) useStore.getState().addAnnotation(image.id, nx, ny, text)
+      // Open an inline label field at the click. window.prompt is suppressed in
+      // installed PWAs (it returns null silently), which would make annotation
+      // appear to do nothing; an in-app input always works and is dismissable.
+      const px = viewer.viewport.viewportToViewerElementCoordinates(vp)
+      setPending({ nx, ny, left: px.x, top: px.y })
+      setDraft('')
     })
 
     return () => {
@@ -135,6 +143,13 @@ function LightboxBody({ image }: { image: Image }) {
     recomputePins()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [annotations.length])
+
+  // Discard an in-progress label when the image changes (the stale coords would
+  // otherwise attach to the wrong picture).
+  useEffect(() => {
+    setPending(null)
+    setDraft('')
+  }, [image.id])
 
   const images = project.images
   const idx = images.findIndex((i) => i.id === image.id)
@@ -190,6 +205,53 @@ function LightboxBody({ image }: { image: Image }) {
                 <div className="pin-text">{p.text}</div>
               </div>
             ))}
+            {pending && (
+              <div
+                className="lightbox-anno-pending"
+                style={{ left: pending.left, top: pending.top }}
+              >
+                <div className="pin" />
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault()
+                    const text = draft.trim()
+                    if (text) useStore.getState().addAnnotation(image.id, pending.nx, pending.ny, text)
+                    setPending(null)
+                    setDraft('')
+                  }}
+                >
+                  <input
+                    autoFocus
+                    className="input"
+                    placeholder="Label this detail"
+                    value={draft}
+                    onChange={(e) => setDraft(e.target.value)}
+                    onKeyDown={(e) => {
+                      // Keep Escape from bubbling to the window handler that
+                      // closes the lightbox; here it just cancels the label.
+                      if (e.key === 'Escape') {
+                        e.stopPropagation()
+                        setPending(null)
+                        setDraft('')
+                      }
+                    }}
+                  />
+                  <div className="btn-row">
+                    <button type="submit" className="btn btn-sm btn-primary">Add</button>
+                    <button
+                      type="button"
+                      className="btn btn-sm btn-ghost"
+                      onClick={() => {
+                        setPending(null)
+                        setDraft('')
+                      }}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </form>
+              </div>
+            )}
           </>
         ) : (
           <div className="lightbox-fallback">

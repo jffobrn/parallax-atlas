@@ -497,6 +497,35 @@
 .osd-host[data-annotating='true'] {
   cursor: crosshair;
 }
+/* In-progress annotation: a pin plus an inline label field at the click point.
+   Replaces window.prompt, which installed PWAs suppress. */
+.lightbox-anno-pending {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 6;
+}
+.lightbox-anno-pending .pin {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 2px solid var(--bg);
+  background: var(--signal);
+  box-shadow: 0 0 0 1px var(--signal);
+}
+.lightbox-anno-pending form {
+  position: absolute;
+  left: 16px;
+  top: -8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 210px;
+  padding: 8px;
+  background: var(--bg-1);
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-sm);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
+}
 
 /* ---- Map (reused from the Sightlines core) --------------------------- */
 .map-fill {
