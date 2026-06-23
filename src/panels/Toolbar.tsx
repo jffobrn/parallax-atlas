@@ -24,12 +24,13 @@ export function Toolbar() {
   const cursor = useStore((s) => s.cursor)
   const adoptProject = useStore((s) => s.adoptProject)
   const resetToSample = useStore((s) => s.resetToSample)
+  const newBlankProject = useStore((s) => s.newBlankProject)
 
   const [publishOpen, setPublishOpen] = useState(false)
   const [aboutOpen, setAboutOpen] = useState(false)
   const [msg, setMsg] = useState<string | null>(null)
-  const [resetArmed, setResetArmed] = useState(false)
-  const resetTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const [armed, setArmed] = useState<'reset' | 'new' | null>(null)
+  const armTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const importInput = useRef<HTMLInputElement | null>(null)
 
   const flash = (m: string) => {
@@ -56,22 +57,30 @@ export function Toolbar() {
     }
   }
 
-  // Reset replaces the local project with the fictional sample, so it asks to
-  // confirm. We do this in-app (a two-step button) rather than with window.confirm,
-  // which some browsers and installed PWAs suppress, and we surface the outcome,
-  // which a bare `void resetToSample()` would have swallowed.
-  const reset = () => {
-    if (!resetArmed) {
-      setResetArmed(true)
-      if (resetTimer.current) clearTimeout(resetTimer.current)
-      resetTimer.current = setTimeout(() => setResetArmed(false), 4000)
+  // New and Reset both discard the current project, so each asks to confirm. We
+  // do this in-app (a two-step button) rather than with window.confirm, which
+  // some browsers and installed PWAs suppress, and we surface the outcome, which
+  // a bare `void` would have swallowed. Only one action is armed at a time.
+  const armOrRun = (kind: 'reset' | 'new', run: () => Promise<void>, ok: string) => {
+    if (armed !== kind) {
+      setArmed(kind)
+      if (armTimer.current) clearTimeout(armTimer.current)
+      armTimer.current = setTimeout(() => setArmed(null), 4000)
       return
     }
-    if (resetTimer.current) clearTimeout(resetTimer.current)
-    setResetArmed(false)
-    resetToSample()
-      .then(() => flash('Reset to the sample.'))
-      .catch((e) => flash(e instanceof Error ? e.message : 'Reset failed.'))
+    if (armTimer.current) clearTimeout(armTimer.current)
+    setArmed(null)
+    run()
+      .then(() => flash(ok))
+      .catch((e) => flash(e instanceof Error ? e.message : 'Action failed.'))
+  }
+  const reset = () => armOrRun('reset', resetToSample, 'Reset to the sample.')
+  const newBlank = () => armOrRun('new', newBlankProject, 'New blank atlas.')
+
+  const armedStyle = {
+    background: 'var(--alert-wash)',
+    borderColor: 'var(--alert-dim)',
+    color: 'var(--alert-bright)',
   }
 
   const publicCount = project.images.filter((s) => s.consent === 'public').length
@@ -109,19 +118,19 @@ export function Toolbar() {
         </button>
         <button
           className="btn btn-sm btn-mono btn-ghost"
+          onClick={newBlank}
+          title="Start a new, empty atlas (export first to keep this one)"
+          style={armed === 'new' ? armedStyle : undefined}
+        >
+          {armed === 'new' ? 'Confirm new' : 'New'}
+        </button>
+        <button
+          className="btn btn-sm btn-mono btn-ghost"
           onClick={reset}
           title="Replace the local project with the fictional sample"
-          style={
-            resetArmed
-              ? {
-                  background: 'var(--alert-wash)',
-                  borderColor: 'var(--alert-dim)',
-                  color: 'var(--alert-bright)',
-                }
-              : undefined
-          }
+          style={armed === 'reset' ? armedStyle : undefined}
         >
-          {resetArmed ? 'Confirm reset' : 'Reset'}
+          {armed === 'reset' ? 'Confirm reset' : 'Reset'}
         </button>
         <button className="btn btn-sm btn-mono btn-ghost" onClick={() => setAboutOpen(true)}>
           About

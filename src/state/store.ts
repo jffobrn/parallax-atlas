@@ -60,6 +60,7 @@ export interface AppState {
   // lifecycle
   init: () => Promise<void>
   resetToSample: () => Promise<void>
+  newBlankProject: () => Promise<void>
   adoptProject: (project: Project) => void
 
   // atlas identity
@@ -178,6 +179,26 @@ export const useStore = create<AppState>()((set, get) => {
       set({
         project: sample,
         activePanelId: sample.panels[0]?.id ?? null,
+        selectedImageId: null,
+        selectedRelationId: null,
+        editingImageId: null,
+        lightboxImageId: null,
+        linkingFromId: null,
+        timeBrush: null,
+        placing: null,
+      })
+    },
+
+    async newBlankProject() {
+      // Start an empty atlas (no images, relations, or plates), discarding the
+      // sample. Cancel any pending debounced save so it cannot restore it.
+      cancelPersist()
+      await clearProject()
+      const project = blankProject()
+      await saveProject(project)
+      set({
+        project,
+        activePanelId: null,
         selectedImageId: null,
         selectedRelationId: null,
         editingImageId: null,

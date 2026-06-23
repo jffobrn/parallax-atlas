@@ -4,6 +4,14 @@ All notable changes to Atlas are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project adheres
 to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-06-23
+
+### Added
+
+- A **New** action in the toolbar starts an empty atlas, so you can begin your
+  own work instead of editing the bundled sample. Like Reset, it confirms in two
+  steps; the current project is discarded, so export it first to keep it.
+
 ## [1.1.2] - 2026-06-23
 
 ### Fixed

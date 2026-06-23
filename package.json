@@ -1,7 +1,7 @@
 {
   "name": "atlas",
   "private": true,
-  "version": "1.1.2",
+  "version": "1.2.0",
   "type": "module",
   "description": "Assemble many images of one place, object, or event into a relational, spatial, and temporal atlas, consent first. The second tool of the Parallax suite.",
   "license": "SEE LICENSE IN LICENSE",
