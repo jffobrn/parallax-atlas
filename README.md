@@ -1,5 +1,7 @@
 # Atlas
 
+> **Researcher's guide:** [docs/GUIDE.md](docs/GUIDE.md) walks through every view, control, and the consent boundary in full, with screenshots.
+
 Assemble many images of one place, object, or event into a relational, spatial,
 and temporal atlas.
 
